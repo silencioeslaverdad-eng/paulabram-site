@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Slate, stone, mountain. Firm, clear, grounded. */
+    --bg: 246 245 242;          /* stone white */
+    --surface: 236 234 228;     /* deeper stone band */
+    --card-bg: 255 255 255;     /* white cards */
+    --text: 30 38 50;           /* deep slate ink */
+    --muted: 92 102 116;        /* slate grey */
+    --accent: 158 108 36;       /* firm bronze-amber */
+    --accent-strong: 184 130 48;
+    --slate: 38 50 68;          /* solid slate (buttons, strips) */
+    --slate-strong: 52 66 86;
+    --line: 208 204 195;        /* stone border */
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: rgb(var(--bg));
+    color: rgb(var(--text));
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .font-display {
+    font-family: 'Fraunces', Georgia, serif;
+  }
+
+  ::selection {
+    background: rgb(var(--accent) / 0.25);
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-6xl px-6;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.22em];
+    color: rgb(var(--accent));
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded px-7 py-3.5 text-sm font-semibold transition-all;
+    background: rgb(var(--slate));
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: rgb(var(--slate-strong));
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded px-7 py-3.5 text-sm font-semibold transition-all;
+    border: 1px solid rgb(var(--line));
+    color: rgb(var(--text));
+    background: transparent;
+  }
+  .btn-ghost:hover {
+    border-color: rgb(var(--slate));
+    color: rgb(var(--slate));
+  }
+
+  .card {
+    @apply rounded-md p-8;
+    background: rgb(var(--card-bg));
+    border: 1px solid rgb(var(--line));
+    box-shadow: 0 1px 3px rgb(30 38 50 / 0.06);
+  }
+
+  .cred-mark {
+    border-left: 2px solid rgb(var(--accent));
+    padding-left: 14px;
+  }
+
+  .band-stone {
+    background: rgb(var(--surface));
+    border-top: 1px solid rgb(var(--line));
+    border-bottom: 1px solid rgb(var(--line));
+  }
+
+  .prose-site p {
+    @apply mb-5 leading-relaxed;
+    color: rgb(var(--muted));
+  }
+}
