@@ -100,6 +100,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <p className="mt-1"><a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="hover:underline">WhatsApp</a></p>
             <p className="mt-1"><a href="https://www.linkedin.com/in/paulabram-embodiment-architect-0bb170409/" target="_blank" rel="noreferrer" className="hover:underline">LinkedIn</a></p>
             <p className="mt-1"><a href="https://www.youtube.com/@TheGroundedMan-TV" target="_blank" rel="noreferrer" className="hover:underline">YouTube</a></p>
+            <p className="mt-1"><a href="https://ko-fi.com/paulabram" target="_blank" rel="noreferrer" className="hover:underline">Support this work on Ko-fi</a></p>
           </div>
           <div className="text-xs leading-relaxed" style={{ color: 'rgb(var(--muted))' }}>
             <p className="mb-3 font-semibold uppercase tracking-widest" style={{ color: 'rgb(var(--accent))' }}>Please note</p>

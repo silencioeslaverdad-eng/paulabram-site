@@ -6,7 +6,8 @@ import { liveDay } from '../lib/liveDay'
 const INTRO_ID = 'Pr_DdeW4D2A'
 const START_HERE_LIST = 'PLBxeTMf6DlIU'
 const RESET_LIST = 'PLfz0OVQQQ0LTF0rLr0Ot8d5byJQEOvfDK'
-const CHANNEL_URL = 'https://www.youtube.com/@TheGroundedMan-TV'
+const SUBSCRIBE_URL = 'https://www.youtube.com/@TheGroundedMan?sub_confirmation=1'
+const KOFI_URL = 'https://ko-fi.com/paulabram'
 
 function PlaylistEmbed({ listId, title }: { listId: string; title: string }) {
   return (
@@ -118,12 +119,20 @@ export default function Watch() {
               Book a Free Clarity Session
             </a>
             <a
-              href={CHANNEL_URL}
+              href={SUBSCRIBE_URL}
               target="_blank"
               rel="noreferrer"
               className="btn-ghost !border-white/40 !text-white hover:!border-white hover:!text-white"
             >
               Subscribe on YouTube
+            </a>
+            <a
+              href={KOFI_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-ghost !border-white/40 !text-white hover:!border-white hover:!text-white"
+            >
+              Support on Ko-fi
             </a>
           </div>
         </div>

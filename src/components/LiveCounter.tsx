@@ -1,6 +1,7 @@
 import { liveDay } from '../lib/liveDay'
 
 const CHANNEL_URL = 'https://www.youtube.com/@TheGroundedMan-TV'
+const SUBSCRIBE_URL = 'https://www.youtube.com/@TheGroundedMan?sub_confirmation=1'
 
 export default function LiveCounter() {
   return (
@@ -40,6 +41,16 @@ export default function LiveCounter() {
           >
             Join Us Live at 7am
           </a>
+          <p className="mt-4 text-sm" style={{ color: 'rgb(246 245 242 / 0.75)' }}>
+            <a
+              href={SUBSCRIBE_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="underline underline-offset-4 hover:text-white"
+            >
+              Subscribe for the daily practice
+            </a>
+          </p>
         </div>
       </div>
     </section>
