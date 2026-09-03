@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Application to Work with PaulAbram</title>
+  <meta name="description" content="Application form for the body-led coaching with PaulAbram." />
+  <style>
+    :root {
+      --ink: #0d1110;
+      --charcoal: #121816;
+      --moss: #26362f;
+      --gold: #c9a45f;
+      --gold2: #e2c987;
+      --bone: #f3ede1;
+      --stone: #d8d0bf;
+      --muted: #9b927f;
+      --line: rgba(243,237,225,.16);
+      --field: rgba(255,255,255,.055);
+      --danger: #b96a4d;
+      --ok: #91a68f;
+      --max: 900px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(201,164,95,.16), transparent 30rem),
+        linear-gradient(180deg, #0d1110, #121816 52%, #0d1110);
+      color: var(--bone);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 54px 0 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      color: var(--gold2);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .75rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    h1, h2, h3 { line-height: 1.05; margin: 0; letter-spacing: -.035em; }
+    h1 { font-size: clamp(2.7rem, 8vw, 5.8rem); max-width: 760px; }
+    h2 { font-size: clamp(1.65rem, 4vw, 2.6rem); margin-bottom: .8rem; }
+    h3 { font-size: 1.15rem; margin-bottom: .4rem; }
+    p { color: var(--stone); margin: 0 0 1rem; }
+
+    .lead {
+      margin-top: 1.2rem;
+      max-width: 760px;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      color: #eee5d3;
+    }
+
+    .note {
+      margin-top: 1.4rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid rgba(226,201,135,.28);
+      background: rgba(201,164,95,.08);
+      border-radius: 18px;
+      color: var(--stone);
+      max-width: 760px;
+    }
+
+    main { padding: 36px 0 60px; }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: linear-gradient(180deg, rgba(255,255,255,.065), rgba(255,255,255,.025));
+      box-shadow: 0 24px 70px rgba(0,0,0,.32);
+      padding: clamp(1.1rem, 4vw, 2rem);
+    }
+
+    .section {
+      padding: 1.3rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .section:last-child { border-bottom: 0; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    label {
+      display: grid;
+      gap: .4rem;
+      font-weight: 760;
+      color: var(--bone);
+      font-size: .96rem;
+    }
+
+    label span {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: .9rem;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid rgba(243,237,225,.17);
+      border-radius: 16px;
+      background: var(--field);
+      color: var(--bone);
+      padding: .85rem .95rem;
+      min-height: 50px;
+      outline: none;
+      font: inherit;
+    }
+
+    textarea { min-height: 120px; resize: vertical; }
+    input:focus, textarea:focus, select:focus { border-color: rgba(226,201,135,.72); }
+
+    .scale {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: .35rem;
+      margin-top: .6rem;
+    }
+
+    .scale label {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 42px;
+      border: 1px solid rgba(243,237,225,.17);
+      border-radius: 12px;
+      background: rgba(255,255,255,.04);
+      cursor: pointer;
+      font-weight: 850;
+    }
+
+    .scale input { display: none; }
+    .scale label:has(input:checked) {
+      background: linear-gradient(135deg, var(--gold2), var(--gold));
+      color: #16130d;
+      border-color: transparent;
+    }
+
+    .choice-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem;
+      margin-top: .6rem;
+    }
+
+    .choice-row label {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      border: 1px solid rgba(243,237,225,.17);
+      border-radius: 999px;
+      padding: .65rem .85rem;
+      background: rgba(255,255,255,.04);
+      cursor: pointer;
+    }
+
+    .choice-row input { width: auto; min-height: auto; }
+
+    .actions {
+      display: flex;
+      gap: .8rem;
+      flex-wrap: wrap;
+      align-items: center;
+      padding-top: 1rem;
+    }
+
+    button, .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      border: 0;
+      border-radius: 999px;
+      padding: 0 1.25rem;
+      font: inherit;
+      font-weight: 850;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .primary {
+      background: linear-gradient(135deg, var(--gold2), var(--gold));
+      color: #16130d;
+    }
+
+    .secondary {
+      border: 1px solid rgba(243,237,225,.18);
+      background: rgba(255,255,255,.045);
+      color: var(--bone);
+    }
+
+    .smallprint {
+      font-size: .88rem;
+      color: var(--muted);
+      margin-top: .8rem;
+    }
+
+    .status {
+      display: none;
+      margin-top: 1rem;
+      padding: .8rem 1rem;
+      border-radius: 14px;
+      background: rgba(145,166,143,.11);
+      border: 1px solid rgba(145,166,143,.35);
+      color: #dfe8d9;
+    }
+
+    .status.show { display: block; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    @media (max-width: 720px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .scale { grid-template-columns: repeat(5, 1fr); }
+      button, .button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="eyebrow">Body-Led Coaching with PaulAbram</div>
+      <h1>Application to work with PaulAbram</h1>
+      <p class="lead">This is not a test. It is a first honest conversation with yourself about what you are carrying, what it is costing you, and what you are ready to say yes to.</p>
+      <div class="note"><strong>Before you begin:</strong> answer simply and honestly. The aim is not to sound impressive. The aim is to help PaulAbram understand whether this work is the right fit for where you are now.</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <form class="panel" id="applicationForm">
+        <section class="section">
+          <h2>Your details</h2>
+          <div class="grid-2">
+            <label>Name
+              <input name="name" autocomplete="name" required />
+            </label>
+            <label>Email
+              <input name="email" type="email" autocomplete="email" required />
+            </label>
+            <label>Phone
+              <input name="phone" autocomplete="tel" />
+            </label>
+            <label>Location / time zone
+              <input name="location" />
+            </label>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>The honest starting point</h2>
+          <label>1. What is bringing you here now?
+            <span>What is happening in your life, body, work, relationships or sense of self that makes this the right time to seek support?</span>
+            <textarea name="bringing" required></textarea>
+          </label>
+          <br />
+          <label>2. What are you tired of carrying?
+            <span>Name the repeating pattern, pressure, stress, behaviour or internal struggle you are ready to outgrow.</span>
+            <textarea name="carrying" required></textarea>
+          </label>
+          <br />
+          <label>3. What is this costing you?
+            <span>If nothing changes, what does this continue to cost your energy, body, confidence, relationships, work, purpose or future?</span>
+            <textarea name="cost" required></textarea>
+          </label>
+        </section>
+
+        <section class="section">
+          <h2>The future you are saying yes to</h2>
+          <label>4. What would feel like a true yes?
+            <span>If the next 90 days created a meaningful shift, what would be different in your life?</span>
+            <textarea name="yes" required></textarea>
+          </label>
+          <br />
+          <label>5. What have you already tried?
+            <span>Include coaching, therapy, bodywork, training, courses, self-development, medical support or personal practices.</span>
+            <textarea name="tried"></textarea>
+          </label>
+        </section>
+
+        <section class="section">
+          <h2>Readiness and fit</h2>
+          <label>6. How ready are you to take honest action?
+            <span>Choose a number from 1 to 10.</span>
+          </label>
+          <div class="scale" role="radiogroup" aria-label="Readiness score">
+            <label><input type="radio" name="readiness" value="1" required />1</label>
+            <label><input type="radio" name="readiness" value="2" />2</label>
+            <label><input type="radio" name="readiness" value="3" />3</label>
+            <label><input type="radio" name="readiness" value="4" />4</label>
+            <label><input type="radio" name="readiness" value="5" />5</label>
+            <label><input type="radio" name="readiness" value="6" />6</label>
+            <label><input type="radio" name="readiness" value="7" />7</label>
+            <label><input type="radio" name="readiness" value="8" />8</label>
+            <label><input type="radio" name="readiness" value="9" />9</label>
+            <label><input type="radio" name="readiness" value="10" />10</label>
+          </div>
+          <br />
+          <label>Why did you choose that number?
+            <textarea name="readinessWhy" required></textarea>
+          </label>
+          <br />
+          <label>7. Are you willing and able to commit to weekly coaching, honest reflection, practical action between sessions and a 90-day change process?</label>
+          <div class="choice-row">
+            <label><input type="radio" name="commitment" value="Yes" required /> Yes</label>
+            <label><input type="radio" name="commitment" value="No" /> No</label>
+            <label><input type="radio" name="commitment" value="I need to discuss this" /> I need to discuss this</label>
+          </div>
+          <br />
+          <label>What support or structure would help you follow through?
+            <textarea name="support"></textarea>
+          </label>
+          <br />
+          <label>8. Are you ready to invest financially, emotionally and practically in this work if it feels like the right fit?</label>
+          <div class="choice-row">
+            <label><input type="radio" name="investment" value="Yes" required /> Yes</label>
+            <label><input type="radio" name="investment" value="No" /> No</label>
+            <label><input type="radio" name="investment" value="I need to discuss this" /> I need to discuss this</label>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Anything else PaulAbram should know?</h2>
+          <label>9. Relevant health considerations, current therapy/medical support, major life events, access needs or concerns.
+            <textarea name="anythingElse"></textarea>
+          </label>
+        </section>
+
+        <section class="section">
+          <h2>Send your application</h2>
+          <p>This form will open your email app with your answers already placed into the message. You can review it, add anything else, then send it.</p>
+          <div class="actions">
+            <button class="primary" type="submit">Email my application</button>
+            <button class="secondary" type="button" id="copyButton">Copy application text</button>
+            <button class="secondary" type="reset">Clear form</button>
+          </div>
+          <p class="smallprint"><strong>Important:</strong> this page uses your own email app. It does not store your answers anywhere. Applications are sent to permanentchange@pm.me via your own email app.</p>
+          <div class="status" id="status">Application text copied. You can now paste it into an email.</div>
+        </section>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      This coaching programme is not therapy, diagnosis or medical treatment. If you are in crisis or need clinical support, contact an appropriate healthcare professional or emergency service.
+    </div>
+  </footer>
+
+  <script>
+    // Replace this with the real destination email before publishing.
+    const RECIPIENT_EMAIL = "permanentchange@pm.me";
+
+    const form = document.getElementById('applicationForm');
+    const status = document.getElementById('status');
+
+    function value(name) {
+      const field = form.elements[name];
+      if (!field) return '';
+      if (field instanceof RadioNodeList) {
+        return field.value || '';
+      }
+      return field.value || '';
+    }
+
+    function buildApplicationText() {
+      return [
+        'Application to work with PaulAbram',
+        'Body-Led Coaching with PaulAbram',
+        '',
+        'CONTACT DETAILS',
+        'Name: ' + value('name'),
+        'Email: ' + value('email'),
+        'Phone: ' + value('phone'),
+        'Location / time zone: ' + value('location'),
+        '',
+        '1. What is bringing you here now?',
+        value('bringing'),
+        '',
+        '2. What are you tired of carrying?',
+        value('carrying'),
+        '',
+        '3. What is this costing you?',
+        value('cost'),
+        '',
+        '4. What would feel like a true yes?',
+        value('yes'),
+        '',
+        '5. What have you already tried?',
+        value('tried'),
+        '',
+        '6. How ready are you to take honest action?',
+        value('readiness') + '/10',
+        '',
+        'Why did you choose that number?',
+        value('readinessWhy'),
+        '',
+        '7. Commitment check',
+        value('commitment'),
+        '',
+        'What support or structure would help you follow through?',
+        value('support'),
+        '',
+        '8. Practical readiness',
+        value('investment'),
+        '',
+        '9. Anything else PaulAbram should know?',
+        value('anythingElse'),
+        '',
+        'Sent from the PaulAbram application form.'
+      ].join('\n');
+    }
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const subject = encodeURIComponent('Application to work with PaulAbram - ' + value('name'));
+      const body = encodeURIComponent(buildApplicationText());
+      window.location.href = 'mailto:' + RECIPIENT_EMAIL + '?subject=' + subject + '&body=' + body;
+    });
+
+    document.getElementById('copyButton').addEventListener('click', async function() {
+      const text = buildApplicationText();
+      try {
+        await navigator.clipboard.writeText(text);
+        status.classList.add('show');
+        setTimeout(() => status.classList.remove('show'), 4000);
+      } catch (error) {
+        const temp = document.createElement('textarea');
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        status.classList.add('show');
+        setTimeout(() => status.classList.remove('show'), 4000);
+      }
+    });
+  </script>
+</body>
+</html>
