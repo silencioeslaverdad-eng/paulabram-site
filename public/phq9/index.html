@@ -6,20 +6,16 @@
 <title>PHQ-9 Questionnaire — 21-Day Energy Body Reset | The Grounded Man TV</title>
 
 <!-- ============================================================
-  PHQ-9 QUESTIONNAIRE PAGE
-  Host alongside index.html in your GitHub Pages repo
-  (e.g. https://YOURUSERNAME.github.io/moonrise-reset/phq9.html)
+  PHQ-9 QUESTIONNAIRE PAGE — paulabram.io/phq9
 
-  WORKS WITH THE SAME SETUP AS THE JOIN PAGE:
-  - Create a second free form at formspree.io and paste its endpoint
-    into FORMSPREE_ENDPOINT below → results arrive in hello@paulabram.io
-  - Until then, results fall back to opening the visitor's email app
-    with the completed answers pre-written.
+  SUBMISSIONS: one click, straight into MailerLite
+  (account 2538549, hidden form 200423131831075983, group "PHQ-9 Results").
+  Fields stored per submission: phq9_which, phq9_ref, phq9_score,
+  phq9_band, phq9_answers (+ name if given).
 
-  PRIVACY: the form asks for a name but it is OPTIONAL. An anonymous
-  submission contains only the answers + scores, so you can pair
-  before/after results by asking participants to use a code word
-  of their choosing (see the "Reference" field below).
+  PRIVACY: name is OPTIONAL. Anonymous submissions use a generated
+  placeholder address; pair before/after results via the participant's
+  chosen reference code (the "Reference" field below).
 ============================================================ -->
 
 <style>
@@ -249,10 +245,11 @@
   }
   document.getElementById("phq9-form").addEventListener("change", updateScore);
 
-  /* ---------- submission ---------- */
-  // Create a second free form at formspree.io and paste its endpoint here.
-  // Until then, results open the visitor's email app pre-written to you.
-  const FORMSPREE_ENDPOINT = "";
+  /* ---------- submission ----------
+     Results go straight into MailerLite (hidden "PHQ-9 Results" form,
+     group: PHQ-9 Results). One click, nothing else opens. Anonymous
+     submissions get a generated placeholder address. */
+  const ML_ENDPOINT = "https://assets.mailerlite.com/jsonp/2538549/forms/200423131831075983/subscribe";
   const CONTACT_EMAIL = "hello@paulabram.io";
 
   document.getElementById("phq9-form").addEventListener("submit", async function(e){
@@ -265,48 +262,35 @@
       status.textContent = "Please answer all 9 questions before sending.";
       return;
     }
-    const name = document.getElementById("f-name").value.trim() || "(anonymous)";
+    const name = document.getElementById("f-name").value.trim() || "";
     const ref  = document.getElementById("f-ref").value.trim() || "(none)";
     const q10  = (document.querySelector('input[name="q10"]:checked')||{}).value || "(not answered)";
     const [label] = band(total);
 
-    const lines = ITEMS.map((t,i) =>
-      "Q" + (i+1) + " (" + t.substring(0,48) + "...): " +
-      ((document.querySelector('input[name="q'+i+'"]:checked')||{}).value ?? "?") + " — " +
-      OPTIONS[parseInt((document.querySelector('input[name="q'+i+'"]:checked')||{}).value ?? 0,10)]
-    );
-    const payload =
-      "PHQ-9 SUBMISSION — 21-Day Energy Body Reset\n" +
-      "Assessment: " + which.value + "\n" +
-      "Name: " + name + "\n" +
-      "Reference code: " + ref + "\n" +
-      "Date: " + new Date().toLocaleString() + "\n\n" +
-      lines.join("\n") + "\n\n" +
-      "Q10 (difficulty): " + q10 + "\n" +
-      "TOTAL SCORE: " + total + " / 27\n" +
-      "Severity band: " + label + "\n";
+    // compact answer string: Q1..Q9 numeric scores + Q10 text
+    const answers = ITEMS.map((t,i) =>
+      "Q" + (i+1) + ":" + ((document.querySelector('input[name="q'+i+'"]:checked')||{}).value ?? "?")
+    ).join(" ") + " | Q10: " + q10;
 
-    if(FORMSPREE_ENDPOINT){
-      status.textContent = "Sending...";
-      try{
-        const res = await fetch(FORMSPREE_ENDPOINT, {
-          method:"POST",
-          headers:{"Content-Type":"application/json","Accept":"application/json"},
-          body: JSON.stringify({
-            which: which.value, name, reference: ref, total_score: total,
-            severity_band: label, q10, answers: lines.join("\n")
-          })
-        });
-        if(res.ok){ status.textContent = "Thank you — your questionnaire has been sent."; }
-        else { status.textContent = "Something went wrong — please email it directly to " + CONTACT_EMAIL; }
-      }catch(err){
-        status.textContent = "Network error — please email it directly to " + CONTACT_EMAIL;
-      }
-    } else {
-      const subject = encodeURIComponent("PHQ-9 " + (which.value.startsWith("BASE")?"Baseline":"Final") + " — " + name);
-      window.location.href = "mailto:" + CONTACT_EMAIL +
-        "?subject=" + subject + "&body=" + encodeURIComponent(payload);
-      status.textContent = "Opening your email app... if nothing happens, email " + CONTACT_EMAIL;
+    status.textContent = "Sending...";
+    try{
+      const body = new URLSearchParams();
+      const anon = "phq9-" + Date.now() + "-" + Math.floor(Math.random()*1e6) + "@anon.paulabram.io";
+      body.set("fields[email]", anon);
+      if(name) body.set("fields[name]", name);
+      body.set("fields[phq9_which]", which.value);
+      body.set("fields[phq9_ref]", ref);
+      body.set("fields[phq9_score]", String(total));
+      body.set("fields[phq9_band]", label);
+      body.set("fields[phq9_answers]", answers);
+      body.set("ml-submit", "1");
+      body.set("anticsrf", "");
+      await fetch(ML_ENDPOINT, { method:"POST", mode:"no-cors", body });
+      status.textContent = "Thank you — your questionnaire has been sent.";
+      document.getElementById("phq9-form").reset();
+      updateScore();
+    }catch(err){
+      status.textContent = "Something went wrong — please email your score (" + total + "/27, " + label + ") to " + CONTACT_EMAIL;
     }
   });
 </script>
