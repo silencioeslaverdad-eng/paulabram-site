@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHQ-9 Questionnaire — 21-Day Energy Body Reset | The Grounded Man TV</title>
+
+<!-- ============================================================
+  PHQ-9 QUESTIONNAIRE PAGE
+  Host alongside index.html in your GitHub Pages repo
+  (e.g. https://YOURUSERNAME.github.io/moonrise-reset/phq9.html)
+
+  WORKS WITH THE SAME SETUP AS THE JOIN PAGE:
+  - Create a second free form at formspree.io and paste its endpoint
+    into FORMSPREE_ENDPOINT below → results arrive in hello@paulabram.io
+  - Until then, results fall back to opening the visitor's email app
+    with the completed answers pre-written.
+
+  PRIVACY: the form asks for a name but it is OPTIONAL. An anonymous
+  submission contains only the answers + scores, so you can pair
+  before/after results by asking participants to use a code word
+  of their choosing (see the "Reference" field below).
+============================================================ -->
+
+<style>
+  :root{
+    --gold:#e8c987; --gold-dim:rgba(232,201,135,.55);
+    --ink:#f5f2e6; --muted:#b9bccf; --faint:#9699a8;
+    --bg0:#080a1a; --bg1:#262c54; --card:rgba(20,24,50,.75);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
+    background:radial-gradient(120% 90% at 50% 15%, var(--bg1) 0%, var(--bg0) 70%);
+    color:var(--ink); min-height:100vh;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.6;
+    background-image:
+      radial-gradient(1.5px 1.5px at 12% 22%, #fff 60%, transparent),
+      radial-gradient(1px 1px at 34% 8%,  #dde 60%, transparent),
+      radial-gradient(1.8px 1.8px at 57% 30%, #fff 60%, transparent),
+      radial-gradient(1px 1px at 78% 14%, #ccd 60%, transparent),
+      radial-gradient(1.4px 1.4px at 90% 40%, #fff 60%, transparent),
+      radial-gradient(1px 1px at 22% 55%, #dde 60%, transparent),
+      radial-gradient(1.6px 1.6px at 66% 62%, #fff 60%, transparent),
+      radial-gradient(1px 1px at 45% 78%, #ccd 60%, transparent),
+      radial-gradient(1.3px 1.3px at 85% 82%, #fff 60%, transparent),
+      radial-gradient(1px 1px at 8%  88%, #dde 60%, transparent);
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+
+  header{text-align:center;padding:60px 0 10px}
+  .brand{letter-spacing:.45em;font-weight:700;color:var(--gold);font-size:.85rem;margin-bottom:22px}
+  h1{font-size:clamp(1.6rem,4.5vw,2.4rem);letter-spacing:.05em}
+  .sub{color:var(--muted);margin-top:12px;font-size:.98rem;line-height:1.6}
+
+  section{margin:44px 0}
+  h2{color:var(--gold);letter-spacing:.22em;font-size:.9rem;text-transform:uppercase;
+     margin-bottom:18px;text-align:center}
+
+  .panel{background:var(--card);border:1px solid rgba(232,201,135,.28);border-radius:14px;
+         padding:24px 22px;backdrop-filter:blur(4px)}
+  .panel p{color:var(--muted);font-size:.92rem;line-height:1.65;margin-bottom:12px}
+  .panel p:last-child{margin-bottom:0}
+  .note{border-left:3px solid var(--gold);padding:10px 14px;background:rgba(232,201,135,.06);
+        border-radius:0 8px 8px 0;color:var(--muted);font-size:.88rem;line-height:1.6;margin:16px 0}
+
+  /* which assessment toggle */
+  .which{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:6px 0 4px}
+  .which label.opt{display:flex;align-items:center;gap:8px;cursor:pointer;
+    background:rgba(8,10,26,.6);border:1px solid rgba(232,201,135,.35);border-radius:10px;
+    padding:12px 20px;color:var(--ink);font-size:.95rem;margin:0}
+  .which input{accent-color:var(--gold);width:auto}
+  .which label.opt:has(input:checked){border-color:var(--gold);background:rgba(232,201,135,.1)}
+
+  /* questions */
+  .q{margin:22px 0}
+  .q .qt{font-size:.98rem;line-height:1.55;margin-bottom:10px}
+  .q .qt b{color:var(--gold);margin-right:8px}
+  .opts{display:grid;grid-template-columns:1fr;gap:8px}
+  @media(min-width:560px){.opts{grid-template-columns:repeat(4,1fr)}}
+  .opts label{display:block;text-align:center;background:rgba(8,10,26,.6);
+    border:1px solid rgba(232,201,135,.25);border-radius:8px;padding:10px 6px;
+    font-size:.82rem;color:var(--muted);cursor:pointer;line-height:1.35;transition:.15s;margin:0}
+  .opts input{position:absolute;opacity:0;pointer-events:none}
+  .opts label:has(input:checked){border-color:var(--gold);color:var(--ink);
+    background:rgba(232,201,135,.12)}
+
+  /* live score */
+  .scorebar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    background:var(--card);border:1px solid var(--gold-dim);border-radius:12px;
+    padding:16px 20px;margin:26px 0;backdrop-filter:blur(4px)}
+  .scorebar .num{font-size:2.2rem;font-weight:800;color:var(--gold)}
+  .scorebar .band{color:var(--ink);font-size:1rem}
+  .scorebar .hint{color:var(--faint);font-size:.8rem;width:100%}
+
+  label.fl{display:block;color:var(--faint);font-size:.75rem;letter-spacing:.18em;
+        text-transform:uppercase;margin:18px 0 6px}
+  input[type=text],input[type=email]{width:100%;background:rgba(8,10,26,.7);
+    border:1px solid rgba(232,201,135,.3);border-radius:8px;color:var(--ink);
+    padding:12px 14px;font-size:.95rem;font-family:inherit}
+  input:focus{outline:none;border-color:var(--gold)}
+
+  button{margin-top:26px;width:100%;background:var(--gold);color:#141020;border:none;
+         border-radius:8px;padding:15px;font-size:1rem;font-weight:800;letter-spacing:.12em;
+         cursor:pointer;text-transform:uppercase}
+  button:hover{filter:brightness(1.08)}
+  .status{margin-top:14px;text-align:center;font-size:.9rem;color:var(--gold);min-height:1.2em}
+
+  footer{text-align:center;color:var(--faint);font-size:.82rem;padding:10px 0 60px;line-height:1.9}
+  footer a{color:var(--gold);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand">THE GROUNDED MAN TV</div>
+    <h1>WELLBEING QUESTIONNAIRE</h1>
+    <p class="sub">Part of the 21-Day Energy Body Reset (5–26 October 2026)<br>
+    Takes about 2 minutes. Your answers go directly and only to Paul —
+    you may leave your name off entirely if you prefer.</p>
+  </header>
+
+  <section>
+    <div class="panel">
+      <p>Over the <b style="color:var(--ink)">last 2 weeks</b>, how often have you been
+         bothered by any of the following problems?</p>
+      <div class="note">
+        <b style="color:var(--ink)">Before you begin — choose which questionnaire this is:</b>
+        <div class="which" style="margin-top:12px">
+          <label class="opt"><input type="radio" name="which" value="BASELINE (Day 1 — before the reset)" checked> Baseline — Day 1, before we begin</label>
+          <label class="opt"><input type="radio" name="which" value="FINAL (Day 21 — after the reset)"> Final — Day 21, after the reset</label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <form id="phq9-form">
+    <div id="questions"></div>
+
+    <div class="q">
+      <div class="qt"><b>10.</b>If you ticked off any problems, how difficult have these
+        problems made it for you to do your work, take care of things at home,
+        or get along with other people?</div>
+      <div class="opts" style="grid-template-columns:1fr 1fr" id="q10-opts">
+        <label><input type="radio" name="q10" value="Not difficult at all">Not difficult at all</label>
+        <label><input type="radio" name="q10" value="Somewhat difficult">Somewhat difficult</label>
+        <label><input type="radio" name="q10" value="Very difficult">Very difficult</label>
+        <label><input type="radio" name="q10" value="Extremely difficult">Extremely difficult</label>
+      </div>
+    </div>
+
+    <div class="scorebar">
+      <div><span class="num" id="score-num">–</span> <span style="color:var(--faint)">/ 27</span></div>
+      <div class="band" id="score-band">Answer the questions above to see your score</div>
+      <div class="hint">PHQ-9 is a screening tool, not a diagnosis — it simply helps us
+        measure change over the 21 days.</div>
+    </div>
+
+    <section>
+      <div class="panel">
+        <label class="fl" for="f-name">Name (optional — leave blank to submit anonymously)</label>
+        <input id="f-name" type="text" placeholder="Your name, or leave blank">
+
+        <label class="fl" for="f-ref">Personal reference code (optional)</label>
+        <input id="f-ref" type="text" placeholder="e.g. a word only you'd use — lets Paul pair your Day 1 and Day 21 results">
+      </div>
+    </section>
+
+    <button type="submit">Send My Questionnaire</button>
+    <div class="status" id="form-status"></div>
+  </form>
+
+  <section>
+    <div class="note">
+      <b style="color:var(--ink)">A gentle note:</b> this questionnaire measures how you've
+      been feeling — it is not a diagnosis. If you've been struggling and would like support,
+      please reach out to your GP, or in the UK call Samaritans free on 116 123.
+    </div>
+  </section>
+
+  <footer>
+    The Grounded Man TV · <a href="https://paulabram.io">paulabram.io</a> ·
+    <a href="mailto:hello@paulabram.io">hello@paulabram.io</a>
+  </footer>
+</div>
+
+<script>
+  /* ---------- PHQ-9 items (public domain instrument) ---------- */
+  const ITEMS = [
+    "Little interest or pleasure in doing things",
+    "Feeling down, depressed, or hopeless",
+    "Trouble falling or staying asleep, or sleeping too much",
+    "Feeling tired or having little energy",
+    "Poor appetite or overeating",
+    "Feeling bad about yourself — or that you are a failure or have let yourself or your family down",
+    "Trouble concentrating on things, such as reading the newspaper or watching television",
+    "Moving or speaking so slowly that other people could have noticed? Or the opposite — being so fidgety or restless that you have been moving around a lot more than usual",
+    "Thoughts that you would be better off dead, or of hurting yourself in some way"
+  ];
+  const OPTIONS = ["Not at all","Several days","More than half the days","Nearly every day"];
+  const SCORES  = [0,1,2,3];
+
+  /* build questions */
+  const container = document.getElementById("questions");
+  ITEMS.forEach((text, i) => {
+    const div = document.createElement("div");
+    div.className = "q";
+    div.innerHTML =
+      '<div class="qt"><b>' + (i+1) + '.</b>' + text + '</div>' +
+      '<div class="opts">' + OPTIONS.map((o,j) =>
+        '<label><input type="radio" name="q' + i + '" value="' + SCORES[j] + '">' + o + '</label>'
+      ).join("") + '</div>';
+    container.appendChild(div);
+  });
+
+  /* live score */
+  function currentScore(){
+    let total = 0, answered = 0;
+    for(let i=0;i<9;i++){
+      const sel = document.querySelector('input[name="q'+i+'"]:checked');
+      if(sel){ total += parseInt(sel.value,10); answered++; }
+    }
+    return { total, answered };
+  }
+  function band(t){
+    if(t<=4)  return ["Minimal / none", "#9fd8a8"];
+    if(t<=9)  return ["Mild", "#e8c987"];
+    if(t<=14) return ["Moderate", "#eab676"];
+    if(t<=19) return ["Moderately severe", "#e89576"];
+    return ["Severe", "#e87676"];
+  }
+  function updateScore(){
+    const { total, answered } = currentScore();
+    const n = document.getElementById("score-num");
+    const b = document.getElementById("score-band");
+    if(answered < 9){
+      n.textContent = "–";
+      b.textContent = "Answer the questions above to see your score";
+      b.style.color = "";
+      return;
+    }
+    const [label, color] = band(total);
+    n.textContent = total;
+    b.textContent = "Severity band: " + label;
+    b.style.color = color;
+  }
+  document.getElementById("phq9-form").addEventListener("change", updateScore);
+
+  /* ---------- submission ---------- */
+  // Create a second free form at formspree.io and paste its endpoint here.
+  // Until then, results open the visitor's email app pre-written to you.
+  const FORMSPREE_ENDPOINT = "";
+  const CONTACT_EMAIL = "hello@paulabram.io";
+
+  document.getElementById("phq9-form").addEventListener("submit", async function(e){
+    e.preventDefault();
+    const status = document.getElementById("form-status");
+
+    const which = document.querySelector('input[name="which"]:checked');
+    const { total, answered } = currentScore();
+    if(answered < 9){
+      status.textContent = "Please answer all 9 questions before sending.";
+      return;
+    }
+    const name = document.getElementById("f-name").value.trim() || "(anonymous)";
+    const ref  = document.getElementById("f-ref").value.trim() || "(none)";
+    const q10  = (document.querySelector('input[name="q10"]:checked')||{}).value || "(not answered)";
+    const [label] = band(total);
+
+    const lines = ITEMS.map((t,i) =>
+      "Q" + (i+1) + " (" + t.substring(0,48) + "...): " +
+      ((document.querySelector('input[name="q'+i+'"]:checked')||{}).value ?? "?") + " — " +
+      OPTIONS[parseInt((document.querySelector('input[name="q'+i+'"]:checked')||{}).value ?? 0,10)]
+    );
+    const payload =
+      "PHQ-9 SUBMISSION — 21-Day Energy Body Reset\n" +
+      "Assessment: " + which.value + "\n" +
+      "Name: " + name + "\n" +
+      "Reference code: " + ref + "\n" +
+      "Date: " + new Date().toLocaleString() + "\n\n" +
+      lines.join("\n") + "\n\n" +
+      "Q10 (difficulty): " + q10 + "\n" +
+      "TOTAL SCORE: " + total + " / 27\n" +
+      "Severity band: " + label + "\n";
+
+    if(FORMSPREE_ENDPOINT){
+      status.textContent = "Sending...";
+      try{
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method:"POST",
+          headers:{"Content-Type":"application/json","Accept":"application/json"},
+          body: JSON.stringify({
+            which: which.value, name, reference: ref, total_score: total,
+            severity_band: label, q10, answers: lines.join("\n")
+          })
+        });
+        if(res.ok){ status.textContent = "Thank you — your questionnaire has been sent."; }
+        else { status.textContent = "Something went wrong — please email it directly to " + CONTACT_EMAIL; }
+      }catch(err){
+        status.textContent = "Network error — please email it directly to " + CONTACT_EMAIL;
+      }
+    } else {
+      const subject = encodeURIComponent("PHQ-9 " + (which.value.startsWith("BASE")?"Baseline":"Final") + " — " + name);
+      window.location.href = "mailto:" + CONTACT_EMAIL +
+        "?subject=" + subject + "&body=" + encodeURIComponent(payload);
+      status.textContent = "Opening your email app... if nothing happens, email " + CONTACT_EMAIL;
+    }
+  });
+</script>
+</body>
+</html>
