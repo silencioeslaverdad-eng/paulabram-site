@@ -28,7 +28,19 @@ const ROUTES = [
   "/terms",
   "/disclaimer",
 ];
-const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+const CHROME_CANDIDATES = [
+  process.env.PUPPETEER_EXECUTABLE_PATH,
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", // Paul's Mac (local builds)
+  "/usr/bin/google-chrome",
+  "/usr/bin/chromium",
+  "/usr/bin/chromium-browser",
+  "/opt/chrome/chrome",
+].filter(Boolean);
+const CHROME = CHROME_CANDIDATES.find((p) => existsSync(p));
+if (!CHROME) {
+  console.warn("prerender: no Chrome/Chromium found — skipping prerender, deploying SPA as-is");
+  process.exit(0);
+}
 
 const MIME = {
   ".html": "text/html",
