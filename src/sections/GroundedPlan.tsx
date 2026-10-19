@@ -32,7 +32,7 @@ export default function GroundedPlan() {
             <p className="text-base leading-relaxed text-paper/80 md:text-lg">
               I committed to 365 days of live practice, free, so anyone can
               experience what this work does — not read about it, do it. Live
-              at 7am BST every morning, with Sunday Q&amp;As where you can ask
+              at 7 a.m. UK time every morning, with Sunday Q&amp;As where you can ask
               me anything. Not quite halfway. Not stopping.
             </p>
             <a

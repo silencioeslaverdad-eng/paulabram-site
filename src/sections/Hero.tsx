@@ -62,7 +62,7 @@ export default function Hero() {  return (
             />
           </figure>
           <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-smoke">
-            PaulAbram — fascia personal trainer
+            PaulAbram — Fascia Personal Trainer
           </p>
         </div>
       </div>

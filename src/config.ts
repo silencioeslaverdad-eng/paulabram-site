@@ -5,15 +5,15 @@ export const site = {
   email: "hello@paulabram.io",
   calendly: "https://calendly.com/paulabram/20min",
   youtube: "https://www.youtube.com/@TheGroundedMan-TV",
-  blog: "https://paulabram.blogspot.com/",
+  blog: "/blog",
   instagram: "https://www.instagram.com/paulabramofficial/",
   linkedin:
-    "https://www.linkedin.com/in/paulabram-embodiment-architect-0bb170409/",
+    "https://www.linkedin.com/in/paulabram-personal-fascia-trainer-0bb170409/",
   assessment: "https://paulabram.io/assessment/",
   apply: "https://paulabram.io/apply/",
   guide: "https://fascia.paulabram.io/",
   description:
-    "I work as a personal trainer, but on your fascia, not your muscles. Fascia Manoeuvres — slow, simple movements that release stored stress. Live and free every morning at 7:00 a.m. BST.",
+    "I work as a personal trainer, but on your fascia, not your muscles. Fascia Manoeuvres — slow, simple movements that release stored stress. Live and free every morning at 7:00 a.m. UK time.",
 };
 
 /**

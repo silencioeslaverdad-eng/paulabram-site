@@ -37,7 +37,7 @@ export default function Proof() {
 
             <p className="mt-4">
               <a
-                href="https://paulabram.blogspot.com/"
+                href="/blog"
                 className="font-mono text-[12px] uppercase tracking-[0.18em] text-ink underline decoration-clay decoration-2 underline-offset-8 transition-colors hover:text-clay"
               >
                 More words on the blog →

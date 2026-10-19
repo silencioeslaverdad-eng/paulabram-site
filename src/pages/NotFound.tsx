@@ -8,7 +8,7 @@ export default function NotFound() {
         Nothing here — but the practice is live
       </h1>
       <p className="mt-6 max-w-[46ch] text-base leading-relaxed text-ink/80">
-        Every morning, 7:00 a.m. BST, free. That's the best place to start
+        Every morning, 7:00 a.m. UK time, free. That's the best place to start
         anyway.
       </p>
       <div className="mt-8 flex flex-wrap gap-6">
