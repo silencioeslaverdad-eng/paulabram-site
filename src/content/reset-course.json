@@ -37,7 +37,7 @@
   }
  ],
  "areas": {
-  "Back": [
+  "back": [
    {
     "day": 1,
     "clips": [
@@ -102,7 +102,7 @@
     ]
    }
   ],
-  "Breath": [
+  "breath": [
    {
     "day": 1,
     "clips": [
@@ -171,7 +171,7 @@
     ]
    }
   ],
-  "Jaw": [
+  "jaw": [
    {
     "day": 1,
     "clips": [
@@ -236,7 +236,7 @@
     ]
    }
   ],
-  "Legs": [
+  "legs": [
    {
     "day": 1,
     "clips": [
@@ -321,7 +321,7 @@
     ]
    }
   ],
-  "Organs": [
+  "organs": [
    {
     "day": 1,
     "clips": [
@@ -386,7 +386,7 @@
     ]
    }
   ],
-  "Shoulder": [
+  "shoulder": [
    {
     "day": 1,
     "clips": [
