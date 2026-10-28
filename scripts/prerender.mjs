@@ -16,6 +16,7 @@ const ROUTES = [
   "/story",
   "/moonrise",
   "/reset",
+  "/reset-course",
   "/links",
   "/blog",
   "/blog/regulation-vs-stimulation",
