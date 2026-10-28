@@ -4,6 +4,7 @@ import WorkWithMe from './pages/WorkWithMe'
 import MyStory from './pages/MyStory'
 import Moonrise from './pages/Moonrise'
 import Reset from './pages/Reset'
+import ResetCourse from './pages/ResetCourse'
 import Links from './pages/Links'
 import { BlogIndex, BlogPost } from './v3/Blog'
 import { PrivacyPage, TermsPage, DisclaimerPage } from './pages/Legal'
@@ -22,6 +23,8 @@ export default function App() {
         <Route path="/moonrise" element={<Moonrise />} />
         {/* 7-Day Fascia Reset sales/waitlist page (standalone, no site chrome) */}
         <Route path="/reset" element={<Reset />} />
+        {/* buyer course page — 7 days unlock daily, tailored by assessment area */}
+        <Route path="/reset-course" element={<ResetCourse />} />
         {/* card-carousel profile page (standalone, no site chrome) */}
         <Route path="/links" element={<Links />} />
         {/* blog — brought home from Blogspot, full v3 design */}

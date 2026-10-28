@@ -1,0 +1,459 @@
+{
+ "stockSessions": [
+  {
+   "day": 1,
+   "theme": "Find where you're holding \u2014 head-to-toe scan",
+   "videoId": "70Bmqrrj2ts"
+  },
+  {
+   "day": 2,
+   "theme": "Jaw, face and headaches",
+   "videoId": "hR5n7zV-5eg"
+  },
+  {
+   "day": 3,
+   "theme": "The ribcage and the breath",
+   "videoId": "3olU7iyt5Ok"
+  },
+  {
+   "day": 4,
+   "theme": "Lower back and pelvis",
+   "videoId": "6D96SSIeDqw"
+  },
+  {
+   "day": 5,
+   "theme": "Shoulders and neck",
+   "videoId": "YlUVvvzSr4k"
+  },
+  {
+   "day": 6,
+   "theme": "Deep twists and the long exhale",
+   "videoId": "cJ2lvfxMPMM"
+  },
+  {
+   "day": 7,
+   "theme": "Integration \u2014 your daily practice",
+   "videoId": "41BriLrTz2o"
+  }
+ ],
+ "areas": {
+  "Back": [
+   {
+    "day": 1,
+    "clips": [
+     {
+      "title": "Reset Focus - Back Day 1 - Skier Squat",
+      "videoId": "xnTWunlHYW8"
+     }
+    ]
+   },
+   {
+    "day": 2,
+    "clips": [
+     {
+      "title": "Reset Focus - Back Day 2 - Psoas Right",
+      "videoId": "3-IuCc-PSeA"
+     }
+    ]
+   },
+   {
+    "day": 3,
+    "clips": [
+     {
+      "title": "Reset Focus - Back Day 3 - Psoas Left",
+      "videoId": "umWPe45M_ok"
+     }
+    ]
+   },
+   {
+    "day": 4,
+    "clips": [
+     {
+      "title": "Reset Focus - Back Day 4 - Psoas Left Hip",
+      "videoId": "hQ9fj6yMkdI"
+     }
+    ]
+   },
+   {
+    "day": 5,
+    "clips": [
+     {
+      "title": "Reset Focus - Back Day 5 - Pretzel Right",
+      "videoId": "pi-e0c5VQT0"
+     }
+    ]
+   },
+   {
+    "day": 6,
+    "clips": [
+     {
+      "title": "Reset Focus - Back Day 6 - Pretzel Left",
+      "videoId": "Yne3goQjahI"
+     }
+    ]
+   },
+   {
+    "day": 7,
+    "clips": [
+     {
+      "title": "Reset Focus - Back Day 7 - Psoas Right Hip",
+      "videoId": "pD0IZ_l7X5M"
+     }
+    ]
+   }
+  ],
+  "Breath": [
+   {
+    "day": 1,
+    "clips": [
+     {
+      "title": "Reset Focus - Breath Day 1 - Thyroid Throat",
+      "videoId": "LWihtTYMITA"
+     }
+    ]
+   },
+   {
+    "day": 2,
+    "clips": [
+     {
+      "title": "Reset Focus - Breath Day 2 - Sternum Chest",
+      "videoId": "iuYWugxYZtQ"
+     }
+    ]
+   },
+   {
+    "day": 3,
+    "clips": [
+     {
+      "title": "Reset Focus - Breath Day 3 - Solar Diaphragm",
+      "videoId": "uN0CjPt91I0"
+     }
+    ]
+   },
+   {
+    "day": 4,
+    "clips": [
+     {
+      "title": "Reset Focus - Breath Day 4 - Lymphatic Sweep",
+      "videoId": "ujGs2lLdquQ"
+     }
+    ]
+   },
+   {
+    "day": 5,
+    "clips": [
+     {
+      "title": "Reset Focus - Breath Day 5 - Side Bend Right",
+      "videoId": "AHn4gZOGeCw"
+     },
+     {
+      "title": "Reset Focus - Breath Day 5 - Side Bend Left",
+      "videoId": "_wPFB6Z8JXg"
+     }
+    ]
+   },
+   {
+    "day": 6,
+    "clips": [
+     {
+      "title": "Reset Focus - Breath Day 6 - Thymus Release",
+      "videoId": "2egR2aRPk-g"
+     }
+    ]
+   },
+   {
+    "day": 7,
+    "clips": [
+     {
+      "title": "Reset Focus - Breath Day 7 - Breathing In",
+      "videoId": "VES8m8oPMzQ"
+     }
+    ]
+   }
+  ],
+  "Jaw": [
+   {
+    "day": 1,
+    "clips": [
+     {
+      "title": "Reset Focus - Jaw Day 1 - Chi Wash",
+      "videoId": "Zhbxent0DwU"
+     }
+    ]
+   },
+   {
+    "day": 2,
+    "clips": [
+     {
+      "title": "Reset Focus - Jaw Day 2 - Thumb Pull",
+      "videoId": "7frZZ6mG3hI"
+     }
+    ]
+   },
+   {
+    "day": 3,
+    "clips": [
+     {
+      "title": "Reset Focus - Jaw Day 3 - Masseter Twist",
+      "videoId": "PDdInHuHs7U"
+     }
+    ]
+   },
+   {
+    "day": 4,
+    "clips": [
+     {
+      "title": "Reset Focus - Jaw Day 4 - Knuckle Sweep",
+      "videoId": "dEUq-3QqVPA"
+     }
+    ]
+   },
+   {
+    "day": 5,
+    "clips": [
+     {
+      "title": "Reset Focus - Jaw Day 5 - Finger Press",
+      "videoId": "AUSZj5zKopU"
+     }
+    ]
+   },
+   {
+    "day": 6,
+    "clips": [
+     {
+      "title": "Reset Focus - Jaw Day 6 - Double Masseter",
+      "videoId": "kMmErQuLX5M"
+     }
+    ]
+   },
+   {
+    "day": 7,
+    "clips": [
+     {
+      "title": "Reset Focus - Jaw Day 7 - Line Gentle",
+      "videoId": "mW9coIzQRf8"
+     }
+    ]
+   }
+  ],
+  "Legs": [
+   {
+    "day": 1,
+    "clips": [
+     {
+      "title": "Reset Focus - Legs Day 1 - Toe Separation Right",
+      "videoId": "OthydD8LbsI"
+     }
+    ]
+   },
+   {
+    "day": 2,
+    "clips": [
+     {
+      "title": "Reset Focus - Legs Day 2 - Plantar Sole Twist",
+      "videoId": "9L-5DqpoCd4"
+     },
+     {
+      "title": "Reset Focus - Legs Day 2 - Plantar Sole Twist Left",
+      "videoId": "o0R8DvoBYr4"
+     }
+    ]
+   },
+   {
+    "day": 3,
+    "clips": [
+     {
+      "title": "Reset Focus - Legs Day 3 - Ankle Shin Torque",
+      "videoId": "jOAIhxzEkMI"
+     },
+     {
+      "title": "Reset Focus - Legs Day 3 - Ankle Shin Torque Left",
+      "videoId": "NyWdPKJLRb8"
+     }
+    ]
+   },
+   {
+    "day": 4,
+    "clips": [
+     {
+      "title": "Reset Focus - Legs Day 4 - Calf Achilles",
+      "videoId": "MqhHwimACGM"
+     },
+     {
+      "title": "Reset Focus - Legs Day 4 - Calf Achilles Left",
+      "videoId": "1Zvw1XWGHjw"
+     }
+    ]
+   },
+   {
+    "day": 5,
+    "clips": [
+     {
+      "title": "Reset Focus - Legs Day 5 - Knee Torque",
+      "videoId": "Ijkzmo0c-ls"
+     },
+     {
+      "title": "Reset Focus - Legs Day 5 - Knee Torque Left",
+      "videoId": "C7xqIQ5QlN0"
+     }
+    ]
+   },
+   {
+    "day": 6,
+    "clips": [
+     {
+      "title": "Reset Focus - Legs Day 6 - Outer Thigh",
+      "videoId": "sf_Cwizo0RY"
+     },
+     {
+      "title": "Reset Focus - Legs Day 6 - Outer Thigh Left",
+      "videoId": "pSzbRCpLrcg"
+     }
+    ]
+   },
+   {
+    "day": 7,
+    "clips": [
+     {
+      "title": "Reset Focus - Legs Day 7 - Toe Separation Left",
+      "videoId": "BtJ6PRE_l1s"
+     }
+    ]
+   }
+  ],
+  "Organs": [
+   {
+    "day": 1,
+    "clips": [
+     {
+      "title": "Reset Focus - Organs Day 1 - Solar Plexus",
+      "videoId": "TVfcmlYDzPc"
+     }
+    ]
+   },
+   {
+    "day": 2,
+    "clips": [
+     {
+      "title": "Reset Focus - Organs Day 2 - Solar Diaphragm",
+      "videoId": "4M_rMybivvQ"
+     }
+    ]
+   },
+   {
+    "day": 3,
+    "clips": [
+     {
+      "title": "Reset Focus - Organs Day 3 - Navel Work",
+      "videoId": "AixU_JRLDaY"
+     }
+    ]
+   },
+   {
+    "day": 4,
+    "clips": [
+     {
+      "title": "Reset Focus - Organs Day 4 - Bladder Pubic",
+      "videoId": "vE1EvndixvI"
+     }
+    ]
+   },
+   {
+    "day": 5,
+    "clips": [
+     {
+      "title": "Reset Focus - Organs Day 5 - Bladder Line",
+      "videoId": "yI5w8v6KtMc"
+     }
+    ]
+   },
+   {
+    "day": 6,
+    "clips": [
+     {
+      "title": "Reset Focus - Organs Day 6 - Visceral Sweep",
+      "videoId": "zzNH7L-h6ms"
+     }
+    ]
+   },
+   {
+    "day": 7,
+    "clips": [
+     {
+      "title": "Reset Focus - Organs Day 7 - Thymus Thyroid",
+      "videoId": "VUTOgBvDfOE"
+     }
+    ]
+   }
+  ],
+  "Shoulder": [
+   {
+    "day": 1,
+    "clips": [
+     {
+      "title": "Reset Focus - Shoulder Day 1 - Elbow Talk",
+      "videoId": "9KqBFNKjrsU"
+     }
+    ]
+   },
+   {
+    "day": 2,
+    "clips": [
+     {
+      "title": "Reset Focus - Shoulder Day 2 - Raising Arm",
+      "videoId": "gkYjJV7Wv80"
+     }
+    ]
+   },
+   {
+    "day": 3,
+    "clips": [
+     {
+      "title": "Reset Focus - Shoulder Day 3 - Trap Anchor Right",
+      "videoId": "XgfqUs1rPR0"
+     }
+    ]
+   },
+   {
+    "day": 4,
+    "clips": [
+     {
+      "title": "Reset Focus - Shoulder Day 4 - Trap Left",
+      "videoId": "jhejwzVI6U4"
+     }
+    ]
+   },
+   {
+    "day": 5,
+    "clips": [
+     {
+      "title": "Reset Focus - Shoulder Day 5 - Wristy Right",
+      "videoId": "xxSgb8XcP7M"
+     }
+    ]
+   },
+   {
+    "day": 6,
+    "clips": [
+     {
+      "title": "Reset Focus - Shoulder Day 6 - Wristy Left",
+      "videoId": "nshdptVFWek"
+     }
+    ]
+   },
+   {
+    "day": 7,
+    "clips": [
+     {
+      "title": "Reset Focus - Shoulder Day 7 - Elbow Talk Right",
+      "videoId": "Svt97zSaKSI"
+     },
+     {
+      "title": "Reset Focus - Shoulder Day 7 - Elbow Talk Left",
+      "videoId": "T3PJ9aeCAr0"
+     }
+    ]
+   }
+  ]
+ }
+}
