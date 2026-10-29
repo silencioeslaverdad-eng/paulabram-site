@@ -37,7 +37,7 @@ const links = {
 const offers = [
   { name: "The Daily Practice", price: "Free", href: YOUTUBE },
   { name: "The Programme", price: "£39 /month", href: STRIPE.programme },
-  { name: "The 7 Day Programme", price: "£49 one-off", href: STRIPE.sevenDay },
+  { name: "The 7 Day Programme", price: "£27 one-off", href: STRIPE.sevenDay },
   { name: "The Coaching", price: "£149 /month", href: STRIPE.coaching },
   { name: "The Training", price: "£392 /month", href: STRIPE.training },
   { name: "The Intensive", price: "£588 /month", href: STRIPE.intensive },

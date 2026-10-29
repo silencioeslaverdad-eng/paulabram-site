@@ -12,11 +12,11 @@ import Seo from "@/components/Seo";
  * present; no medical claims.
  */
 
-const CHECKOUT_URL: string | null = "https://buy.stripe.com/6oU8wPc5td43fwk2d2awo02"; // Stripe Payment Link, £49
+const CHECKOUT_URL: string | null = "https://buy.stripe.com/aFa8wP4D19RRck87xmawo09"; // Stripe Payment Link, £27
 const ML_WAITLIST_SHARE_URL =
   "https://preview.mailerlite.io/forms/2538549/REPLACE_ME/share"; // TODO: Paul — create "7-Day Reset waitlist" form in MailerLite and paste its share URL
 const ASSESSMENT_URL = "https://paulabram.io/assessment/";
-const PRICE = "£49";
+const PRICE = "£27";
 
 const days = [
   { day: "Day 1", title: "Find where you're holding", text: "A guided head-to-toe tour. Most people locate their main line of tension in the first ten minutes — often somewhere they never thought to look." },
@@ -74,7 +74,7 @@ export default function Reset() {
     <div className="min-h-screen bg-[#0d0d0d] text-neutral-200 antialiased">
       <Seo
         title="The 7-Day Fascia Reset — tailored to what your body is holding"
-        description="Seven guided days of Fascia Manoeuvres — movement and breath, not a workout — selected and sequenced around your assessment. £49, 14-day refund."
+        description="Seven guided days of Fascia Manoeuvres — movement and breath, not a workout — selected and sequenced around your assessment. £27, 14-day refund."
       />
 
       {/* Header */}

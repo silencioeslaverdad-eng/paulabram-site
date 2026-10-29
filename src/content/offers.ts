@@ -3,7 +3,7 @@
 
 export const STRIPE = {
   programme: "https://buy.stripe.com/8x2bJ10mLfcbfwk18Yawo01", // £39/month
-  sevenDay: "https://buy.stripe.com/6oU8wPc5td43fwk2d2awo02", // £49 one-off
+  sevenDay: "https://buy.stripe.com/aFa8wP4D19RRck87xmawo09", // £27 one-off
   coaching: "https://buy.stripe.com/fZu28rd9x3ttbg418Yawo03", // £149/month
   training: "https://buy.stripe.com/7sYaEX0mLggf0Bq4laawo04", // £392/month
   intensive: "https://buy.stripe.com/aFaeVd6L97JJac06tiawo05", // £588/month
@@ -79,7 +79,7 @@ export const MONTHLY_OFFERS: Offer[] = [
     name: "The 7 Day Programme",
     blurb:
       "A personalised programme built for you from the library, based on your assessment.",
-    price: "£49",
+    price: "£27",
     priceClass: "once",
     cta: "Join →",
     href: STRIPE.sevenDay,
