@@ -8,20 +8,28 @@ export function Hero() {
       <div className="g3-inner">
         <div className="g3-hero-grid">
           <div>
-            <div className="g3-kicker">Fascia · Nervous system regulation · Grounding</div>
+            <div className="g3-kicker">You can't think your way out of this one.</div>
             <h1>
-              I thought I did all the work.
+              You're not broken.
               <br />
-              In the end I was <em>still holding on.</em>
+              You're just <em>guarded.</em>
             </h1>
             <p className="sub">
-              The last part of my healing wasn't in my mind. It was in my body. I help people
-              release what they're holding — physically and emotionally — so they can stop
-              hiding, stop reacting, and live a regulated life.
+              You're a clenched fist that doesn't know it's clenched. Your body
+              learned to protect you before you could choose, and it never
+              learned to stop. That pattern became physical, and talking alone
+              has never quite reached it, because it doesn't live in your mind.
             </p>
             <p className="sub" style={{ marginTop: 18 }}>
-              And what that means is less stress — more capacity, reduced pain — more
-              flexibility, greater awareness, and more space.
+              I know. I lived there too. It took me until I was 58 to name what
+              I'd been carrying since I was a boy. Now I teach the way out
+              through the body: movement, breath, internal connection. The
+              letting go, the releasing, the unwinding. And the knowing of it.
+            </p>
+            <p className="sub" style={{ marginTop: 18 }}>
+              You don't have to work out which of this fits you — that's what
+              the free 20-minute call is for. Tell me where you're at. If I can
+              help, I'll say how. If I can't, I'll say that.
             </p>
           </div>
           <div className="g3-hero-photo">
@@ -34,6 +42,12 @@ export function Hero() {
                 Join the free daily practice
               </a>
             </div>
+            <p className="g3-hero-cred">
+              PaulAbram — Fascia Personal Trainer. Twenty years in the military, a
+              broken back, and the long way back through the body. Behind the work:
+              hypnotherapy, NLP, transformational coaching, Reiki. The door is always
+              the body. Free class, live, every morning, 7:00 a.m. UK time.
+            </p>
           </div>
         </div>
       </div>
@@ -70,16 +84,6 @@ export function OfferSummary() {
               </small>
             </div>
             <div className="g3-offer-price">Free</div>
-          </div>
-          <div className="g3-offer-row">
-            <div className="g3-offer-name">
-              The 21-Day Reset{" "}
-              <small>
-                Three weeks of guided practice, live with me. Rebuild the habit of standing
-                down.
-              </small>
-            </div>
-            <div className="g3-offer-price">By donation</div>
           </div>
           <div className="g3-offer-row">
             <div className="g3-offer-name">

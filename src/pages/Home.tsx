@@ -1,4 +1,5 @@
 import { Ground, Header, FloatCTA, Footer, Quote } from "@/v3/Chrome";
+import AgentChat from "@/components/AgentChat";
 import {
   Hero,
   OfferSummary,
@@ -39,6 +40,7 @@ export default function Home() {
         <Footer />
       </div>
       <FloatCTA />
+      <AgentChat page="home" />
     </div>
   );
 }

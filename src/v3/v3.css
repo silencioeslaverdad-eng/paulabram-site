@@ -69,6 +69,8 @@
          letter-spacing:0.5px; text-transform:uppercase; margin-bottom:36px; }
 .g3 h1 em { font-style:normal; color:var(--red); }
 .g3-hero .sub { font-size:25px; line-height:1.55; max-width:760px; }
+.g3-hero-cred { margin-top:24px; font-size:19px; line-height:1.5;
+                letter-spacing:0.5px; color:var(--white); max-width:420px; }
 .g3-cta { display:inline-block; margin-top:48px;
           font-family:'Oswald','Arial Narrow',Impact,sans-serif;
           font-size:22px; font-weight:700; letter-spacing:1px; text-transform:uppercase;

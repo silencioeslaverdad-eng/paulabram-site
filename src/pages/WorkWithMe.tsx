@@ -1,9 +1,9 @@
 import { Ground, Header, FloatCTA, Footer } from "@/v3/Chrome";
+import AgentChat from "@/components/AgentChat";
 import {
   FREE_OFFERS,
   SESSION_OFFERS,
   MONTHLY_OFFERS,
-  DONATION_OFFER,
   type Offer,
 } from "../content/offers";
 
@@ -47,8 +47,27 @@ export default function WorkWithMe() {
                 <em>Here's everything, priced.</em>
               </h1>
               <p className="g3-standfirst">
-                This is what I offer and what it costs. Start free; go deeper when it
-                earns it.
+                The order is important. So we work with the body first —
+                because the body literally keeps score. It somehow seems to just
+                keep holding onto these protection patterns long after you'd think
+                the work has been done — the psychological work, the emotional
+                work, even the spiritual work.
+              </p>
+              <p className="g3-standfirst" style={{ marginTop: 14 }}>
+                But then the things that are held onto through the body release,
+                and when that surfaces, it can bring with it a deeper understanding
+                — an integration, an embodiment of the reason why we've been hiding
+                or held back. At that point, there may be a deeper emotional and
+                psychological journey required — maybe a little hypnotherapy, maybe
+                some pure, simple energy work. Ultimately what we're looking for is
+                harmony, so that the nervous system is regulated — and that means
+                we can flex and respond to real problems, instead of problems
+                perceived from a past position where a threat or a risk once
+                happened.
+              </p>
+              <p className="g3-standfirst" style={{ marginTop: 14 }}>
+                So: start free, then we go deeper if it's needed. Everything is
+                priced below — you won't need a call to find out what it costs.
               </p>
 
               <h2>
@@ -65,17 +84,13 @@ export default function WorkWithMe() {
                 <span className="num">03</span>Monthly — the real work
               </h2>
               <OfferTable offers={MONTHLY_OFFERS} />
-
-              <h2>
-                <span className="num">04</span>By donation
-              </h2>
-              <OfferTable offers={[DONATION_OFFER]} />
             </div>
           </section>
         </main>
         <Footer />
       </div>
       <FloatCTA />
+      <AgentChat page="work-with-me" />
     </div>
   );
 }

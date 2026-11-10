@@ -196,6 +196,23 @@ export default function MyStory() {
                 Fasting, stillness, long silences. Not to be impressive — because I
                 cannot ask anyone to do what I have not done.
               </p>
+              <p style={{ maxWidth: 760, marginTop: 20 }}>
+                And I trained in the mind side properly, along the way — hypnotherapy,
+                NLP, transformational coaching, Reiki mastery. None of it was wasted.
+                And none of it, on its own, reached the thing itself. After more than a
+                decade of working with limiting beliefs and unconscious patterns, the
+                body was still holding them — literally, through the fascia:
+                dehydrated, adhered, still protecting. The body keeps score.
+              </p>
+              <p style={{ maxWidth: 760, marginTop: 20 }}>
+                So the order is reversed here. We go in at the body first — and the
+                body breaks free the trauma that is hidden and unconscious. As it
+                surfaces, there is mind work to do, and we do it then, when it can
+                actually land. Energy work and restructuring come in alongside —
+                including targeting the endocrine system — so that body and mind come
+                together. That unison is the point. When the nervous system feels
+                regulated, the work proves itself, time and time again.
+              </p>
               <p className="g3-pull">
                 You cannot think your way out of physical tension. You have to move your
                 way through it.

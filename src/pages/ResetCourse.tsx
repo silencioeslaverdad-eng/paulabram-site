@@ -6,10 +6,18 @@ import courseData from "@/content/reset-course.json";
  * 7-Day Fascia Reset — buyer course page (standalone, no site chrome).
  *
  * URL: /reset-course?area=legs&start=2026-10-30
- *  - area: jaw | shoulder | breath | back | legs | organs (default: back)
+ *  - area: comma-separated keys from jaw | shoulder | breath | back | legs | organs
+ *    (the assessment can point at more than one area; each day then carries one
+ *    focus clip per area). Default: back
  *  - start: ISO date of the buyer's Day 1 (default: today)
  * Days unlock one per day from the start date. Videos are unlisted YouTube
  * embeds: one core session + the buyer's focus clip(s) per day.
+ *
+ * area + start persist in localStorage after the first visit, so a buyer who
+ * bookmarks the page, strips the params, or revisits from a different email
+ * keeps their week — before this, a param-less revisit silently restarted the
+ * course at "today" every day. URL params always win when present (a fresh
+ * link from an email re-anchors the week).
  */
 
 type Clip = { title: string; videoId: string };
@@ -25,32 +33,93 @@ const AREA_LABELS: Record<string, string> = {
   organs: "digestion and the organs",
 };
 
+function parseAreas(s: string | null): string[] {
+  const valid = Object.keys(courseData.areas);
+  const keys = (s || "back")
+    .split(",")
+    .map((k) => k.trim().toLowerCase())
+    .filter((k) => valid.includes(k));
+  const unique = [...new Set(keys)];
+  return unique.length ? unique : ["back"];
+}
+
 function parseDate(s: string | null): Date {
   const d = s ? new Date(s + "T00:00:00") : new Date();
   return isNaN(d.getTime()) ? new Date() : d;
 }
 
+const STORAGE_KEY = "tgm-reset-course";
+
+function readStored(): { area?: string; start?: string } {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+
 export default function ResetCourse() {
   const params = new URLSearchParams(window.location.search);
-  const areaParam = (params.get("area") || "back").toLowerCase();
-  const area = areaParam in courseData.areas ? areaParam : "back";
-  const start = parseDate(params.get("start"));
+  const stored = readStored();
+  // Area: URL wins when present, else whatever this browser had, else default.
+  const areaParam = params.get("area") || stored.area || null;
+  // Start date: never let the week drift LATER. A param-less revisit reuses the
+  // stored start; a re-done assessment generates start=tomorrow, which would
+  // push the week out a day each time — so when both exist, the earlier wins.
+  // An earlier URL start (e.g. PaulAbram sends a corrected link) re-anchors.
+  const paramStart = params.get("start");
+  let startParam: string | null;
+  if (paramStart && stored.start) {
+    startParam = parseDate(paramStart) <= parseDate(stored.start) ? paramStart : stored.start;
+  } else {
+    startParam = paramStart || stored.start || null;
+  }
+  const areas = parseAreas(areaParam);
+  const start = parseDate(startParam);
+  const startYmd =
+    start.getFullYear() +
+    "-" +
+    String(start.getMonth() + 1).padStart(2, "0") +
+    "-" +
+    String(start.getDate()).padStart(2, "0");
+  try {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ area: areaParam || areas.join(","), start: startYmd })
+    );
+  } catch {
+    // private browsing — the page still works for this visit
+  }
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
   const stock: StockDay[] = courseData.stockSessions;
-  const focus: AreaDay[] = (courseData.areas as Record<string, AreaDay[]>)[area];
+  const allAreas = courseData.areas as Record<string, AreaDay[]>;
+  const clipsForDay = (day: number): Clip[] => {
+    const seen = new Set<string>();
+    return areas
+      .flatMap((a) => allAreas[a].find((x) => x.day === day)?.clips ?? [])
+      .filter((c) => (seen.has(c.videoId) ? false : (seen.add(c.videoId), true)));
+  };
+
+  const areaLabel =
+    areas.length === 1
+      ? AREA_LABELS[areas[0]]
+      : areas.length === 2
+        ? `${AREA_LABELS[areas[0]]}, and ${AREA_LABELS[areas[1]]}`
+        : areas.slice(0, -1).map((a) => AREA_LABELS[a]).join(", ") +
+          ", and " + AREA_LABELS[areas[areas.length - 1]];
 
   const days = useMemo(
     () =>
       stock.map((s) => {
         const unlock = new Date(start);
         unlock.setDate(unlock.getDate() + (s.day - 1));
-        const f = focus.find((x) => x.day === s.day);
-        return { ...s, unlock, clips: f ? f.clips : [], open: today >= unlock };
+        return { ...s, unlock, clips: clipsForDay(s.day), open: today >= unlock };
       }),
-    [area]
+    [areas.join(",")]
   );
 
   const openCount = days.filter((d) => d.open).length;
@@ -62,8 +131,9 @@ export default function ResetCourse() {
         <p className="text-sm uppercase tracking-widest text-red-500">The Grounded Man</p>
         <h1 className="mt-2 text-3xl font-bold">Your 7-Day Reset</h1>
         <p className="mt-3 text-neutral-300">
-          Your assessment points at your {AREA_LABELS[area]}. Every day you get the core
-          session everyone shares, plus a short focus manoeuvre chosen for you. One day
+          Your assessment points at your {areaLabel}. Every day you get the core
+          session everyone shares, plus a short focus manoeuvre
+          {areas.length > 1 ? " for each of those areas" : " chosen for you"}. One day
           unlocks at a time — there is no behind and no catching up.
         </p>
 

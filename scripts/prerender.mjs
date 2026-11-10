@@ -19,6 +19,7 @@ const ROUTES = [
   "/reset-course",
   "/links",
   "/blog",
+  "/blog/real-problems-not-remembered-ones",
   "/blog/regulation-vs-stimulation",
   "/blog/silica-illusion-diatomaceous-earth",
   "/blog/cbt-does-not-help-trauma",

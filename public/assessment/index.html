@@ -115,9 +115,17 @@
     #emailSignup .ml-field-group:has([name="fields[areas]"]),
     #emailSignup .ml-field-group:has([name="fields[course_url]"]),
     #emailSignup .ml-field-group:has([name="fields[armchair_flag]"]),
+    #emailSignup .ml-field-group:has([name="fields[nsra_band]"]),
+    #emailSignup .ml-field-group:has([name="fields[nsra_results]"]),
+    #emailSignup .ml-field-group:has([name="fields[nsra_score]"]),
     #emailSignup .ml-field-group:has([name="areas"]),
     #emailSignup .ml-field-group:has([name="course_url"]),
-    #emailSignup .ml-field-group:has([name="armchair_flag"]) { display: none !important; }
+    #emailSignup .ml-field-group:has([name="armchair_flag"]),
+    #emailSignup .ml-field-group:has([name="nsra_band"]),
+    #emailSignup .ml-field-group:has([name="nsra_results"]),
+    #emailSignup .ml-field-group:has([name="nsra_score"]) { display: none !important; }
+    /* catch-all: the embed may only ever show the email field and the button */
+    #emailSignup .ml-field-group:not(:has(input[type="email"])):not(:has(button[type="submit"])) { display: none !important; }
     .deep {
       margin-top: 2.4rem; padding-top: 1.6rem;
       border-top: 1px solid var(--line);
