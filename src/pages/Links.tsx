@@ -6,11 +6,13 @@ import {
   Linkedin,
   Mail,
   Mic,
+  MessageCircle,
   Play,
   Sparkles,
   Youtube,
 } from "lucide-react";
 import Seo from "@/components/Seo";
+import AgentChat from "@/components/AgentChat";
 import { Ground, Header, FloatCTA, Footer } from "@/v3/Chrome";
 import { STRIPE, CALENDLY, YOUTUBE } from "@/content/offers";
 import { POSTS } from "@/content/posts";
@@ -31,6 +33,7 @@ const links = {
     "https://www.linkedin.com/in/paulabram-personal-fascia-trainer-0bb170409/",
   email: "mailto:hello@paulabram.io",
   guide: "https://fascia.paulabram.io/guide/",
+  reference: "https://fascia.paulabram.io/",
   blog: "/blog",
 };
 
@@ -149,6 +152,23 @@ export default function Links() {
           </section>
 
           <div className="g3-links-grid">
+            {/* Ask PaulAbram — the agent card (per agent-spec §5) */}
+            <section className="g3-lcard">
+              <Kicker icon={<MessageCircle size={16} />}>Ask PaulAbram</Kicker>
+              <h3>Questions? Ask the assistant.</h3>
+              <p className="g3-lbody">
+                It knows the work, the prices and the schedule — and it answers
+                straight away, any hour. PaulAbram reads everything himself.
+              </p>
+              <button
+                className="g3-lbtn"
+                style={{ cursor: "pointer", width: "100%", textAlign: "left" }}
+                onClick={() => window.dispatchEvent(new Event("pa-agent-open"))}
+              >
+                Open the chat →
+              </button>
+            </section>
+
             {/* Work together */}
             <section className="g3-lcard">
               <Kicker icon={<Calendar size={16} />}>Work with PaulAbram</Kicker>
@@ -187,6 +207,20 @@ export default function Links() {
               </a>
             </section>
 
+            {/* Full reference guide */}
+            <section className="g3-lcard">
+              <Kicker icon={<BookOpen size={16} />}>Reference</Kicker>
+              <h3>The Complete Fascia Reference Guide</h3>
+              <p className="g3-lbody">
+                The full picture — meridians, trigger points, convergence zones
+                and common pain patterns, mapped and image-first. Free to read,
+                no sign-up.
+              </p>
+              <a className="g3-lbtn ghost" href={links.reference} target="_blank" rel="noopener noreferrer">
+                Open the reference guide →
+              </a>
+            </section>
+
             {/* Free daily class */}
             <section className="g3-lcard">
               <Kicker icon={<Play size={16} />}>Video</Kicker>
@@ -220,7 +254,7 @@ export default function Links() {
               <Kicker icon={<BookOpen size={16} />}>The blog</Kicker>
               <h3>The Guarded Body</h3>
               <div>
-                {POSTS.map((p) => (
+                {POSTS.slice(0, 3).map((p) => (
                   <a key={p.slug} href={`/blog/${p.slug}`} className="g3-lrow press">
                     <span>
                       <span className="bt">{p.title}</span>
@@ -300,6 +334,7 @@ export default function Links() {
         <Footer />
       </div>
       <FloatCTA />
+      <AgentChat page="links" />
     </div>
   );
 }
